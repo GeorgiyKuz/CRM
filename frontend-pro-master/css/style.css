@@ -1,27 +1,27 @@
-body {
+ody {
     background-color: #f0f0f0;
-}
-
-main {
+  }
+  
+  main {
     font-family: Arial, Helvetica, sans-serif;
-}
-
-
-.header {
+  }
+  
+  
+  .header {
     display: flex;
     padding: 20px;
     align-items: center;
     background: #FFFFFF;
     box-shadow: 0px 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0px 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
-}
-
-.header__img {
+  }
+  
+  .header__img {
     margin-right: 53px;
-}
-
-
-
-.header__search {
+  }
+  
+  
+  
+  .header__search {
     width: 581px;
     padding: 12px 16px;
     border: none;
@@ -30,14 +30,14 @@ main {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: 400;
-}
-
-.main {
+  }
+  
+  .main {
     padding-top: 40px;
     padding-left: 20px;
-}
-
-.main__title {
+  }
+  
+  .main__title {
     font-weight: 600;
     font-size: 30px;
     line-height: 33px;
@@ -47,22 +47,22 @@ main {
     /* black */
     color: #333333;
     margin-bottom: 40px;
-}
-
-.main__table {
+  }
+  
+  .main__table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.main__hcol {
+  }
+  
+  .main__hcol {
     font-weight: 400;
     padding-bottom: 8px;
     font-size: 15px;
     line-height: 16px;
     color: #B0B0B0;
-}
-
-.main__load {
+  }
+  
+  .main__load {
     height: 300px;
     margin-bottom: 40px;
     background-color: #FFFFFF;
@@ -70,9 +70,18 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.main__btn {
+  }
+  
+  .main__list {
+    display: none;
+    flex-direction: column;
+    min-height: 300px;
+    background-color: #FFFFFF;
+    margin-bottom: 40px;
+    margin-top: 0px;
+  }
+  
+  .main__btn {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -83,31 +92,32 @@ main {
     background-color: transparent;
     border: 1px solid #9873FF;
     color: #9873FF;
-}
-
-.main__btn span {
+  }
+  
+  .main__btn span {
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
     padding-left: 7px;
-}
-
-.loader {
+  }
+  
+  .loader {
     width: 40px;
     height: 40px;
-    border: 4px solid  #9873FF;
+    border: 4px solid #9873FF;
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
-
-    @keyframes rotation {
+  }
+  
+  @keyframes rotation {
     0% {
-        transform: rotate(0deg);
+      transform: rotate(0deg);
     }
+  
     100% {
-        transform: rotate(360deg);
+      transform: rotate(360deg);
     }
-    } 
+  } 
