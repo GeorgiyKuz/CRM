@@ -12,7 +12,7 @@
 <body>
   <header class="header">
     <a href="#" class="header__link"><img src="./img/logo.png" alt="лого" class="header__img"></a>
-    <input type="text" class="header__search" placeholder="Введите запрос">
+    <input type="text" class="header__search" id="search-input" placeholder="Введите запрос">
   </header>
   <main class="main">
     <h1 class="main__title">Клиенты</h1>
@@ -25,6 +25,7 @@
         <th class="main__hcol">Контакты</th>
         <th class="main__hcol">Действия</th>
       </tr>
+      <tbody id="clients-tbody"></tbody>
     </table>
 
     <div id="loader" class="main__load">
@@ -32,13 +33,29 @@
     </div>
     <ul id="clients" class="main__list">
     </ul>
-    <button class="main__btn"> <svg width="23" height="16" viewBox="0 0 23 16" fill="none"
+    <button class="main__btn" id="add-client-button"> <svg width="23" height="16" viewBox="0 0 23 16" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path
           d="M14.5 8C16.71 8 18.5 6.21 18.5 4C18.5 1.79 16.71 0 14.5 0C12.29 0 10.5 1.79 10.5 4C10.5 6.21 12.29 8 14.5 8ZM5.5 6V3H3.5V6H0.5V8H3.5V11H5.5V8H8.5V6H5.5ZM14.5 10C11.83 10 6.5 11.34 6.5 14V16H22.5V14C22.5 11.34 17.17 10 14.5 10Z"
           fill="#9873FF" />
       </svg>
       <span>Добавить клиента</span></button>
+
+      <!-- Модальное окно для добавления/редактирования клиента -->
+      <div id="modal" class="modal">
+        <div class="modal__content">
+          <span class="modal__close">&times;</span>
+          <h2 id="modalTitle">Добавить клиента</h2>
+          <form id="clientForm">
+            <input type="text" id="clientName" placeholder="Имя" required>
+            <input type="text" id="clientSurname" placeholder="Фамилия" required>
+            <input type="text" id="clientLastName" placeholder="Отчество">
+            <div id="contactsList"></div>
+            <button type="button" id="addContactBtn">Добавить контакт</button>
+            <button type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
 
   </main>
 

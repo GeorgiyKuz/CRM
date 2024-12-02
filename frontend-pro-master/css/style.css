@@ -121,3 +121,42 @@ body {
       transform: rotate(360deg);
     }
   } 
+  .modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Остается на месте */
+    z-index: 1; /* Сверху */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ширина 100% */
+    height: 100%; /* Высота 100% */
+    overflow: auto; /* Переполнение */
+    background-color: rgb(0,0,0); /* Чёрный цвет */
+    background-color: rgba(0,0,0,0.4); /* Полупрозрачный фон */
+  }
+  
+  .modal__content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% от верхнего края и центрирование */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Ширина 80% */
+  }
+  
+  .modal__close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+#loader.active {
+  height: 40%;
+  display: block;
+  padding: 5.8% 0;
+  text-align: center;
+}
+
+.main__list li {
+border-bottom: 1px solid #ccc;
+padding: 10px;
+}
