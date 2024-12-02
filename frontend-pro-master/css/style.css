@@ -68,8 +68,8 @@ th {
   
   .main__table {
     width: 100%;
+    margin-bottom: 50px;
     border-collapse: collapse;
-    border: 1px solid black;
   }
   
   .main__hcol {
