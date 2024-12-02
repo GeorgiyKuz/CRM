@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/normolize.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -16,22 +19,32 @@
   </header>
   <main class="main">
     <h1 class="main__title">Клиенты</h1>
-    <table class="main__table">
+    <table id="main-table"  style="width: 100%;" class="main__table">
+      <thead>
       <tr class="main__row">
         <th class="main__hcol">ID</th>
         <th class="main__hcol">Фамилия, имя, отчество</th>
         <th class="main__hcol">Дата и время создания</th>
         <th class="main__hcol">Последнее изменение</th>
         <th class="main__hcol">Контакты</th>
+        <th class="main__hcol"></th>
         <th class="main__hcol">Действия</th>
       </tr>
+    </thead>
     </table>
 
     <div id="loader" class="main__load">
       <span class="loader"></span>
     </div>
-    <ul id="clients" class="main__list">
-    </ul>
+    <!-- <ul class="main__list">
+      <div class="test__list">
+        <div class="test__constainer">
+
+            <table id="clients" class="test__body"></table>
+
+        </div>
+    </div>
+    </ul> -->
     <button class="main__btn"> <svg width="23" height="16" viewBox="0 0 23 16" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path
@@ -42,8 +55,12 @@
 
   </main>
 
+  
 
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
   <script src="./script.js"></script>
+  
 </body>
 
 </html>
