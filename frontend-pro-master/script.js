@@ -4,10 +4,10 @@ const mainTable = document.getElementById("main-table")
 
 let clients = []
 
-const  icons = [
-  {name:'phone', url: './img/phone.png'},
-  {name: 'email', url: './img/mail.png' },
-  {name: 'VK', url: './img/vk.png'}
+const icons = [
+  { name: 'Телефон', url: './img/phone.png' },
+  { name: 'Email', url: './img/mail.png' },
+  { name: 'VK', url: './img/vk.png' }
 ]
 
 
@@ -37,18 +37,27 @@ function getClients() {
 
 function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contacts }) {
 
+  const iconsContacts = contacts.map((el) => {
+
+    const url = icons.find(ic => ic.name === el.type).url
+    return `<img data-value="${el.value}" class="iconContact" src="${url}" id="myButton"/>`
+
+  })
 
   return `
-
       <tr class="test__firts-list">
                     <td class="test__id">${id + ' '}</td>
                     <td class="test__name">${name + ' ' + surname + ' ' + lastName}</td>
                     <td class="test__date-create">${createdAt}</td>
                     <td class="test__date-last__update">${updatedAt}</td>
-                    <td class="test__contatc"><img class="iconContact" src="./img/phone.png" id="myButton"/>${contacts}</td>
+                    <td class="test__contatc">
+                      <div class="test__contats-body">
+                      ${iconsContacts.join('')}
+                      </div>
+                    </td>
                     <td><button class="test__button__change">Изменить</button></td>
                     <td><button class="test__button__delete">Удалить</button></td>
-                </tr>
+      </tr>
   `
 }
 
@@ -57,13 +66,12 @@ getClients()
 
 function afterRender() {
   let icons = document.querySelectorAll('.iconContact')
+
+
   for (let i = 0; i < icons.length; i++) {
     tippy(icons[i], {
-      content: 'Hello',
-      
+      content: icons[i].dataset.value,
     });
   }
 }
-
-contacts.find(contact => contact.type === "Телефон").value;
 
