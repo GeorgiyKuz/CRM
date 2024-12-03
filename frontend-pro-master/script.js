@@ -4,6 +4,14 @@ const mainTable = document.getElementById("main-table")
 
 let clients = []
 
+const  icons = [
+  {name:'phone', url: './img/phone.png'},
+  {name: 'email', url: './img/mail.png' },
+  {name: 'VK', url: './img/vk.png'}
+]
+
+
+
 function getClients() {
   fetch("http://localhost:3000/api/clients", {
     method: "GET"
@@ -25,7 +33,11 @@ function getClients() {
   })
 }
 
+
+
 function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contacts }) {
+
+
   return `
 
       <tr class="test__firts-list">
@@ -33,7 +45,7 @@ function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contact
                     <td class="test__name">${name + ' ' + surname + ' ' + lastName}</td>
                     <td class="test__date-create">${createdAt}</td>
                     <td class="test__date-last__update">${updatedAt}</td>
-                    <td class="test__contatc"><img class="iconContact" src="./img/phone.png" id="myButton"></img></td>
+                    <td class="test__contatc"><img class="iconContact" src="./img/phone.png" id="myButton"/>${contacts}</td>
                     <td><button class="test__button__change">Изменить</button></td>
                     <td><button class="test__button__delete">Удалить</button></td>
                 </tr>
@@ -47,9 +59,11 @@ function afterRender() {
   let icons = document.querySelectorAll('.iconContact')
   for (let i = 0; i < icons.length; i++) {
     tippy(icons[i], {
-      content: 'My tooltip!',
+      content: 'Hello',
+      
     });
   }
 }
 
+contacts.find(contact => contact.type === "Телефон").value;
 

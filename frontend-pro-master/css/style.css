@@ -156,8 +156,9 @@ th {
   .test__firts-list {
     
       background-color: white;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      
+      /* padding-top: 10px;
+      padding-bottom: 10px; */
       border-radius: 3px;
     
     
@@ -166,6 +167,12 @@ th {
   
   .test__id {
       color: #B0B0B0;
+      padding-top: 25px;
+      padding-bottom: 25px;
+  }
+
+  .test__name {
+    font-size: 18px;
   }
   
   .test__button__change:hover {
@@ -194,9 +201,9 @@ th {
 
 
 
-th, td {
+/* th, td {
   border: 1px solid black;
-}
+} */
 
 tr{
   text-align: center;
