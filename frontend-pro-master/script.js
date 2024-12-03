@@ -166,7 +166,7 @@ clientForm.addEventListener('submit', (event) => {
 
   if (currentClientId) {
     // Редактирование существующего клиента
-    fetch(`http://localhost:3000/api/client/${currentClientId}`, {
+    fetch(`http://localhost:3000/api/clients/${currentClientId}`, {
       method: 'PATCH',
       body: JSON.stringify(clientData),
       headers: {
@@ -228,13 +228,13 @@ clientsList.addEventListener('click', (event) => {
   
   if (event.target.classList.contains('editBtn')) {
     // Получить данные клиента для редактирования перед открытием модального окна
-    fetch(`http://localhost:3000/api/client/${id}`)
+    fetch(`http://localhost:3000/api/clients/${id}`)
       .then(res => res.json())
       .then(data => editClient(data));
   } else if (event.target.classList.contains('deleteBtn')) {
     // Удаление клиента
     if (confirm('Вы уверены, что хотите удалить этого клиента?')) {
-      fetch(`http://localhost:3000/api/client/${id}`, {
+      fetch(`http://localhost:3000/api/clients/${id}`, {
         method: 'DELETE',
       }).then(getClients);
     }
