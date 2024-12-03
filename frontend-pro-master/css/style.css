@@ -81,7 +81,8 @@ th {
 }
 
 .main__load {
-  height: 300px;
+  height: 420px;
+  margin-top: -50px;
   margin-bottom: 40px;
   background-color: #FFFFFF;
   background-repeat: no-repeat;
