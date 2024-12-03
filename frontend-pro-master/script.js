@@ -7,6 +7,7 @@ const modalTitle = document.getElementById("modalTitle");
 const clientForm = document.getElementById("clientForm");
 const addContactBtn = document.getElementById("addContactBtn");
 const contactsList = document.getElementById("contactsList");
+const headerSearch = document.getElementById("search-input")
 
 
 let clients = []
@@ -16,6 +17,7 @@ function getClients() {
     method: "GET"
   }).then(res => {
     res.json().then(data => {
+      console.log(data)
       clients = data
 
       clients.forEach(client => {
@@ -66,7 +68,21 @@ function showLoader() {
 function fetchData(searchQuery = '') {
     showLoader();
     // Здесь должен быть ваш код для запроса к API с учетом searchQuery
-    setTimeout(() => displayClients(apiData.filter(client => client.fio.toLowerCase().includes(searchQuery.toLowerCase()))), 500);
+    // setTimeout(() => displayClients(apiData.filter(client => client.fio.toLowerCase().includes(searchQuery.toLowerCase()))), 500);
+    console.log(searchQuery)
+    fetch(`http://localhost:3000/api/clients/search=${searchQuery}`, {
+      method: "GET"
+    }).then(res => {
+      return res.json().then(data => {
+        clients = data
+        console.log(data)
+  
+        // clients.forEach(client => {
+          // clientsList.innerHTML += clientItem(client)
+        // });
+  
+      })
+    })
 }
 
 // Инициализация
@@ -74,8 +90,7 @@ fetchData();
 
 
 searchInput.addEventListener('input', () => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => fetchData(searchInput.value), 300);
+  setTimeout(() => fetchData(searchInput.value), 300);
 });
 
 let searchTimeout; //Для отмены таймаута
@@ -210,6 +225,7 @@ function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contact
 // Добавьте обработку событий для кнопок редактирования и удаления
 clientsList.addEventListener('click', (event) => {
   const id = event.target.dataset.id;
+  
   if (event.target.classList.contains('editBtn')) {
     // Получить данные клиента для редактирования перед открытием модального окна
     fetch(`http://localhost:3000/api/client/${id}`)
