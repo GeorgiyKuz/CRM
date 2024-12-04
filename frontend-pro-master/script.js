@@ -32,24 +32,6 @@ function getClients() {
   })
 }
 
-function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contacts }) {
-  return `
-      <li class="main__list-item">
-        ID: ${id}
-        Фамилия Имя Отчество:  ${[name, surname, lastName].join(' ')}
-        Дата и время создания: ${createdAt}
-        Последние изменения: ${updatedAt}
-        Контакты: ${contacts}
-        Действия: изменить
-      </li>
-  `
-}
-
-const apiData = [
-  { id: 1, fio: 'Иванов Иван Иванович', created: '2024-03-08 10:00', updated: '2024-03-08 10:30', contacts: ['+79001234567', 'ivan@example.com'] },
-  { id: 2, fio: 'Петров Петр Петрович', created: '2024-03-07 15:00', updated: '2024-03-07 15:15', contacts: ['+79006543210'] },
-  // ... другие данные
-];
 
 function displayClients(data) {
   clientsList.innerHTML = ''; // Очищаем список
@@ -210,16 +192,20 @@ function editClient(client) {
 // Обработайте действия редактирования и удаления в `clientItem` функции
 function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contacts }) {
   return `
-      <li class="main__list-item">
-        ID: ${id}
-        Фамилия Имя Отчество:  ${[name, surname, lastName].join(' ')}
-        Дата и время создания: ${createdAt}
-        Последние изменения: ${updatedAt}
-        Контакты: ${contacts.map(contact => `${contact.type}: ${contact.value}`).join(', ')}
-        Действия: <button class="editBtn" data-id="${id}"><img src="./img/logo__change.png">Изменить</button>
-        <button class="deleteBtn" data-id="${id}"><img src="./img/logo__delete.png">Удалить</button>
-      </li>
-  `
+    <table class="main__table">
+      <tr class="test__firts-list">
+        <td class="test__id">${id}</td>
+        <td class="test__name">${[name, surname, lastName].join(' ')}</td>
+        <td class="test__date-create">${createdAt}</td>
+        <td class="test__date-last__update">${updatedAt}</td>
+        <td class="test__contatc">${contacts.map(contact => `${contact.type}: ${contact.value}`).join(', ')}</td>
+        <td>
+          <button class="editBtn" data-id="${id}"><img src="./img/logo__change.png">Изменить</button>
+          <button class="deleteBtn" data-id="${id}"><img src="./img/logo__delete.png">Удалить</button>
+        </td>
+      </tr>
+    </table>
+  `;
 }
 
 // Добавьте обработку событий для кнопок редактирования и удаления
