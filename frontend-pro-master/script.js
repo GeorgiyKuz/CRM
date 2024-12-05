@@ -8,9 +8,15 @@ const clientForm = document.getElementById("clientForm");
 const addContactBtn = document.getElementById("addContactBtn");
 const contactsList = document.getElementById("contactsList");
 const headerSearch = document.getElementById("search-input")
-
+const mainTable = document.getElementById("main-table")
 
 let clients = []
+
+const icons = [
+  { name: 'Телефон', url: './img/phone.png' },
+  { name: 'Email', url: './img/mail.png' },
+  { name: 'VK', url: './img/vk.png' }
+]
 
 function getClients() {
   fetch("http://localhost:3000/api/clients", {
@@ -191,14 +197,23 @@ function editClient(client) {
 
 // Обработайте действия редактирования и удаления в `clientItem` функции
 function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contacts }) {
+  const iconsContacts = contacts.map((el) => {
+
+    const url = icons.find(ic => ic.name === el.type).url
+    return `<img data-value="${el.value}" class="iconContact" src="${url}" id="myButton"/>`
+  })
   return `
-    <table class="main__table">
+    <table class="test__firts-list">
       <tr class="test__firts-list">
         <td class="test__id">${id}</td>
         <td class="test__name">${[name, surname, lastName].join(' ')}</td>
         <td class="test__date-create">${createdAt}</td>
         <td class="test__date-last__update">${updatedAt}</td>
-        <td class="test__contatc">${contacts.map(contact => `${contact.type}: ${contact.value}`).join(', ')}</td>
+        <td class="test__contatc">${contacts.map(contact => `${contact.type}: ${contact.value}`).join(', ')}
+          <div class="test__contats-body">
+                        ${iconsContacts.join('')}
+          </div> 
+        </td>
         <td>
           <button class="editBtn" data-id="${id}"><img src="./img/logo__change.png">Изменить</button>
           <button class="deleteBtn" data-id="${id}"><img src="./img/logo__delete.png">Удалить</button>
@@ -207,6 +222,16 @@ function clientItem({ id, createdAt, updatedAt, name, surname, lastName, contact
     </table>
   `;
 }
+
+function afterRender() {
+  let icons = document.querySelectorAll('.iconContact')
+  for (let i = 0; i < icons.length; i++) {
+    tippy(icons[i], {
+      content: icons[i].dataset.value,
+    });
+  }
+}
+
 
 // Добавьте обработку событий для кнопок редактирования и удаления
 clientsList.addEventListener('click', (event) => {
